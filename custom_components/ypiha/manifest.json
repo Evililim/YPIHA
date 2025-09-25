@@ -1,0 +1,9 @@
+{
+  "domain": "ypiha",
+  "name": "YPIHA",
+  "version": "0.0.1",
+  "documentation": "https://github.com/yourusername/YPIHA",
+  "requirements": [],
+  "codeowners": ["@yourusername"],
+  "integration_type": "hub"
+}
