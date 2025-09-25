@@ -1,0 +1,6 @@
+{
+  "name": "YPIHA",
+  "content_in_root": false,
+  "render_readme": true,
+  "filename": "custom_components/ypiha/manifest.json"
+}
