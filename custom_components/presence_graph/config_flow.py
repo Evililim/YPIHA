@@ -64,7 +64,11 @@ class PresenceGraphConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
             return await _ensure(self.async_show_form(
                 step_id="spaces",
                 data_schema=vol.Schema({vol.Required("spaces"): str}),
-                description_placeholders={"hint": "Provide a JSON array of space definitions."},
+                description_placeholders={
+                    "hint": (
+                        "Provide a JSON array of spaces or simply list their names, one per line."
+                    )
+                },
             ))
         try:
             spaces = _parse_spaces(user_input["spaces"])
@@ -192,7 +196,13 @@ class PresenceGraphOptionsFlowHandler(config_entries.OptionsFlow):
 
 
 def _parse_spaces(payload: str) -> list[dict[str, Any]]:
-    data = json.loads(payload)
+    stripped = payload.strip()
+    if not stripped:
+        return []
+    try:
+        data = json.loads(payload)
+    except json.JSONDecodeError:
+        data = _coerce_space_names(payload)
     if not isinstance(data, list):
         raise ValueError
     spaces: list[dict[str, Any]] = []
@@ -202,6 +212,18 @@ def _parse_spaces(payload: str) -> list[dict[str, Any]]:
         spaces.append({**validated, "id": space_id})
     ensure_unique_ids(space["id"] for space in spaces)
     return spaces
+
+
+def _coerce_space_names(payload: str) -> list[dict[str, Any]]:
+    names: list[str] = []
+    for line in payload.splitlines():
+        parts = [part.strip() for part in line.split(",")]
+        for name in parts:
+            if name:
+                names.append(name)
+    if not names:
+        raise ValueError
+    return [{"name": name} for name in names]
 
 
 def _parse_links(payload: str) -> list[dict[str, Any]]:
