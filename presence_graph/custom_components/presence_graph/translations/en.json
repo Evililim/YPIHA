@@ -1,0 +1,74 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Presence Graph",
+        "description": "Configure the presence graph model.",
+        "data": {
+          "title": "Name"
+        }
+      },
+      "spaces": {
+        "title": "Spaces",
+        "description": "Define the spaces monitored by the graph.",
+        "data": {
+          "spaces": "Spaces JSON"
+        }
+      },
+      "links": {
+        "title": "Links",
+        "description": "Define connections between spaces.",
+        "data": {
+          "links": "Links JSON"
+        }
+      },
+      "summary": {
+        "title": "Summary",
+        "description": "Validate and create the presence graph entry."
+      }
+    },
+    "error": {
+      "invalid_json": "Invalid JSON format.",
+      "invalid_graph": "The provided graph is inconsistent.",
+      "duplicate_id": "Identifiers must be unique.",
+      "missing_space": "Links must reference existing spaces."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Presence Graph options",
+        "description": "Update spaces and links.",
+        "data": {
+          "spaces": "Spaces JSON",
+          "links": "Links JSON"
+        }
+      }
+    }
+  },
+  "title": "Presence Graph",
+  "entity": {
+    "binary_sensor": {
+      "space": "Presence {space}"
+    },
+    "sensor": {
+      "total": {
+        "name": "Presence Graph Total"
+      },
+      "space_counts": {
+        "name": "Presence per space"
+      }
+    }
+  },
+  "services": {
+    "reload_model": {
+      "name": "Reload model"
+    },
+    "set_space_included": {
+      "name": "Set space inclusion"
+    },
+    "force_space_state": {
+      "name": "Force space state"
+    }
+  }
+}

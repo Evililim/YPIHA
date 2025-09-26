@@ -1,0 +1,44 @@
+reload_model:
+  name: Reload model
+  description: Rebuild the presence graph from the config entry options.
+
+set_space_included:
+  name: Set space inclusion
+  description: Include or exclude a space from the global count.
+  fields:
+    space_id:
+      name: Space id
+      description: Identifier of the space to update.
+      required: true
+      example: salon
+      selector:
+        text:
+    include:
+      name: Include in total
+      description: Whether the space should be included in the global count.
+      required: true
+      selector:
+        boolean:
+
+force_space_state:
+  name: Force space state
+  description: Force the inferred state for debugging.
+  fields:
+    space_id:
+      name: Space id
+      required: true
+      selector:
+        text:
+    occupied:
+      name: Occupied
+      required: true
+      selector:
+        boolean:
+    score:
+      name: Score
+      description: Optional score override between 0 and 1.
+      selector:
+        number:
+          min: 0
+          max: 1
+          step: 0.05
