@@ -1,0 +1,74 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Presence Graph",
+        "description": "Configurer le modèle de présence.",
+        "data": {
+          "title": "Nom"
+        }
+      },
+      "spaces": {
+        "title": "Espaces",
+        "description": "Définir les pièces surveillées par le graphe.",
+        "data": {
+          "spaces": "Espaces (JSON)"
+        }
+      },
+      "links": {
+        "title": "Liaisons",
+        "description": "Définir les connexions entre espaces.",
+        "data": {
+          "links": "Liaisons (JSON)"
+        }
+      },
+      "summary": {
+        "title": "Résumé",
+        "description": "Valider et créer l'entrée Presence Graph."
+      }
+    },
+    "error": {
+      "invalid_json": "Format JSON invalide.",
+      "invalid_graph": "Le graphe fourni est incohérent.",
+      "duplicate_id": "Les identifiants doivent être uniques.",
+      "missing_space": "Les liaisons doivent référencer des espaces existants."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Options Presence Graph",
+        "description": "Mettre à jour les espaces et liaisons.",
+        "data": {
+          "spaces": "Espaces (JSON)",
+          "links": "Liaisons (JSON)"
+        }
+      }
+    }
+  },
+  "title": "Presence Graph",
+  "entity": {
+    "binary_sensor": {
+      "space": "Présence {space}"
+    },
+    "sensor": {
+      "total": {
+        "name": "Presence Graph Total"
+      },
+      "space_counts": {
+        "name": "Présence par espace"
+      }
+    }
+  },
+  "services": {
+    "reload_model": {
+      "name": "Recharger le modèle"
+    },
+    "set_space_included": {
+      "name": "Inclure un espace"
+    },
+    "force_space_state": {
+      "name": "Forcer l'état d'un espace"
+    }
+  }
+}
