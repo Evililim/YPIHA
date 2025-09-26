@@ -12,7 +12,7 @@
         "title": "Espaces",
         "description": "Définir les pièces surveillées par le graphe.",
         "data": {
-          "spaces": "Espaces (JSON)"
+          "spaces": "Espaces (JSON ou noms)"
         }
       },
       "links": {

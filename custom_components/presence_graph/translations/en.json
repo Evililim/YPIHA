@@ -12,7 +12,7 @@
         "title": "Spaces",
         "description": "Define the spaces monitored by the graph.",
         "data": {
-          "spaces": "Spaces JSON"
+          "spaces": "Spaces (JSON or names)"
         }
       },
       "links": {
